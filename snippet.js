@@ -1,5 +1,5 @@
-const nftNumber = document.querySelector('#__next > main > div > div > div > section.section-nft-details > div.dynamic-area > div.dynamic-area__header > span').innerText
-if(nftNumber.length<=12){
+const nftNumber = document.querySelector('#__next > main > div > div > div > section.section-nft-details > div.dynamic-area > div.dynamic-area__header > span').innerHTML
+if(!nftNumber.includes("<br>")){
     const attributeCount = document.getElementsByClassName('attribute').length
     attributes = []
     for (i=0; i<attributeCount; i++){
@@ -10,5 +10,5 @@ if(nftNumber.length<=12){
     let avg = Math.trunc(attributes.reduce((a, b) => (a + b)) / attributes.length);
     let hi = Math.max(...attributes);
     console.log(attributes)
-    document.querySelector('#__next > main > div > div > div > section.section-nft-details > div.dynamic-area > div.dynamic-area__header > span').innerHTML = nftNumber + `<br><div style="padding-left:5px;background-color:black;color:white;border: 1px solid black; width: 300px">Average: ${avg}%<br>Low: ${lo}% <br>High: ${hi}%<div>`;
+    document.querySelector('#__next > main > div > div > div > section.section-nft-details > div.dynamic-area > div.dynamic-area__header > span').innerHTML = nftNumber + `<br><div class="calculated" style="padding-left:5px;background-color:black;color:white;border: 1px solid black; width: 300px">Average: ${avg}%<br>Low: ${lo}% <br>High: ${hi}%<div>`;
 }
